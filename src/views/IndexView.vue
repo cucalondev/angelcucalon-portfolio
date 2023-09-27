@@ -111,42 +111,42 @@
       </div>
     </section>
     <!-- Proyectos Section -->
-    <section class="proyectos bg-secondary text-white" id="proyectos">
-      <div class="container py-5">
-        <h2 class="display-4 font-weight-bold text-center mb-5">
-          Mis Proyectos
-        </h2>
-        <div class="row">
-          <!-- Proyectos (iterados desde el array) -->
-          <div
-            class="col-md-4"
-            v-for="(proyecto, index) in proyectos"
-            :key="index"
-          >
-            <div class="proyecto mb-5">
-              <h4 class="font-weight-bold">{{ proyecto.nombre }}</h4>
-              <p>{{ proyecto.descripcion }}</p>
-              <!-- Imagen previa del proyecto y enlace a la URL -->
-              <a :href="proyecto.url" target="_blank">
-                <img
-                  :src="proyecto.imagen"
-                  alt="Imagen de {{ proyecto.nombre }}"
-                  class="img-fluid mb-3"
-                />
-              </a>
-              <div class="tecnologias mt-3">
-                <i
-                  v-for="(icon, i) in proyecto.iconos"
-                  :key="i"
-                  :class="icon"
-                ></i>
-              </div>
+<section class="proyectos bg-secondary text-white" id="proyectos">
+  <div class="container py-5">
+    <h2 class="display-4 font-weight-bold text-center mb-5">
+      Mis Proyectos
+    </h2>
+    <div class="row">
+      <!-- Proyectos (iterados desde el array) -->
+      <div class="col-md-4" v-for="(proyecto, index) in proyectos" :key="index">
+        <div class="proyecto card mb-5" style="height: 100%;">
+          <div class="card-body">
+            <h4 class="card-title font-weight-bold">{{ proyecto.nombre }}</h4>
+            <p class="card-text">{{ proyecto.descripcion }}</p>
+            <!-- Imagen previa del proyecto y enlace a la URL -->
+            <a :href="proyecto.url" target="_blank">
+              <img
+                :src="proyecto.imagen"
+                alt="Imagen de {{ proyecto.nombre }}"
+                class="img-fluid mb-3"
+                style="max-height: 200px; width: auto;"
+              />
+            </a>
+            <div class="tecnologias">
+              <!-- Agrega iconos de lenguajes de programación aquí (ejemplo) -->
+              <i class="fab fa-html5"></i>
+              <i class="fab fa-css3"></i>
+              <i class="fab fa-js"></i>
+              <i class="fab fa-react"></i>
+              <i class="fab fa-node-js"></i>
+              <i class="fab fa-python"></i>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
+    </div>
+  </div>
+</section>
     <!-- Testimonios Section -->
     <section class="testimonios bg-dark text-white" id="testimonios">
       <div class="container py-5">
@@ -198,24 +198,25 @@
           <!-- Enlaces a redes sociales con iconos -->
 
           <a href="https://www.instagram.com/kukaloon/" target="_blank">
-            <font-awesome-icon
-              :icon="['fab', 'instagram']"
-              size="3x"
-              class="mx-2"
-              style="color: #e4405f"
-            ></font-awesome-icon>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/%C3%A1ngel-cucal%C3%B3n-guti%C3%A9rrez-b51102230/"
-            target="_blank"
-          >
-            <font-awesome-icon
-              :icon="['fab', 'linkedin']"
-              size="3x"
-              class="mx-2"
-              style="color: #0a66c2"
-            ></font-awesome-icon>
-          </a>
+  <font-awesome-icon
+    :icon="['fab', 'instagram']"
+    size="3x"
+    class="mx-2"
+    style="color: #000;"
+  ></font-awesome-icon>
+</a>
+<a
+  href="https://www.linkedin.com/in/%C3%A1ngel-cucal%C3%B3n-guti%C3%A9rrez-b51102230/"
+  target="_blank"
+>
+<font-awesome-icon
+  :icon="['fab', 'linkedin']"
+  size="3x"
+  class="mx-2"
+  style="color: #000;"
+></font-awesome-icon>
+
+</a>
         </div>
       </div>
     </section>
@@ -279,12 +280,6 @@ export default {
 /* Navbar */
 .navbar {
   background-color: #1a1a1a; /* Color de fondo más oscuro */
-}
-
-/* Estilos para el modo oscuro */
-.dark-mode {
-  background-color: #111;
-  color: #fff;
 }
 
 /* Hero Section */
