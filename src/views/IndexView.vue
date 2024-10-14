@@ -27,7 +27,7 @@
               <a class="nav-link" href="#proyectos">Proyectos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#testimonios">Testimonios</a>
+              <a class="nav-link" href="#experiencia">Experiencia</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#contacto">Contacto</a>
@@ -49,7 +49,7 @@
         <h1 class="display-3 font-weight-bold">ÁNGEL CUCALÓN</h1>
         <p class="lead">FULLSTACK DEVELOPER</p>
         <a
-          href="/assets/cv.pdf"
+          href="https://drive.google.com/file/d/1T5ENJsIkBhdFu3lCpGDYOMxQyquaCypY/view?usp=sharing"
           class="btn btn-outline-light btn-lg"
           target="_blank"
           >Descargar CV</a
@@ -59,128 +59,199 @@
 
     <!-- Perfil Section -->
     <section class="perfil bg-secondary text-white" id="perfil">
-      <div class="container py-5">
-        <div class="row">
-          <div class="col-lg-6">
-  <h2 class="display-4 font-weight-bold mb-4">Sobre Mí</h2>
-  <p class="lead">
-    Soy un apasionado desarrollador fullstack con un sueño: convertir ideas creativas en poderosas aplicaciones web y móviles. Mi búsqueda constante de la excelencia y la innovación me impulsa a explorar y dominar nuevas tecnologías.
-  </p>
-  <p class="lead">
-    Mi enfoque va más allá del código. Me encanta colaborar en equipos multidisciplinarios, transformar desafíos en oportunidades y crear soluciones que mejoren la vida de las personas.
-  </p>
-  <p class="lead">
-    ¿Tienes una idea emocionante o un proyecto desafiante? ¡Hablemos y hagámoslo realidad!
-  </p>
-</div>
-
-          <div class="col-lg-6">
-            <h2 class="display-4 font-weight-bold mb-4">Habilidades</h2>
-            <!-- Sección de habilidades original (HTML y CSS) -->
-            <div class="habilidades">
-              <!-- Widgets de habilidades -->
-              <div class="ui-widget">
-                <div class="ui-values">85%</div>
-                <div class="ui-labels">JAVA</div>
-              </div>
-              <div class="ui-widget">
-                <div class="ui-values">50%</div>
-                <div class="ui-labels">HTML</div>
-              </div>
-              <div class="ui-widget">
-                <div class="ui-values">100%</div>
-                <div class="ui-labels">VUE</div>
-              </div>
-              <div class="ui-widget">
-                <div class="ui-values">95%</div>
-                <div class="ui-labels">MONGO</div>
-              </div>
-              <div class="ui-widget">
-                <div class="ui-values">100%</div>
-                <div class="ui-labels">NODE JS</div>
-              </div>
-              <div class="ui-widget">
-                <div class="ui-values">45%</div>
-                <div class="ui-labels">LARAVEL</div>
-              </div>
-              <!-- Agrega más widgets de habilidades según sea necesario -->
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="display-4 font-weight-bold mb-4">Sobre Mí</h2>
+        <p class="lead">
+          Soy un desarrollador fullstack apasionado con una sólida experiencia en la creación de aplicaciones web y servicios financieros. He trabajado en proyectos desafiantes, utilizando tecnologías como .NET, Angular y React.js, lo que me ha permitido desarrollar habilidades en el manejo de bases de datos como SQL Server y MongoDB.
+        </p>
+        <p class="lead">
+          Mi enfoque se basa en la colaboración en equipos multidisciplinarios, donde convierto ideas creativas en soluciones efectivas. Estoy siempre en busca de la innovación, adaptándome rápidamente a nuevas tecnologías y metodologías. Si tienes una idea emocionante o un proyecto desafiante, no dudes en contactarme; ¡estoy listo para hacerlo realidad!
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <h2 class="display-4 font-weight-bold mb-4">
+          Conocimientos y Aptitudes
+        </h2>
+        <div class="conocimientos">
+          <div
+            class="conocimiento"
+            v-for="(conocimiento, index) in conocimientos.slice(0, 2)"
+            :key="index"
+          >
+            <strong>{{ conocimiento.nombre }}</strong>
+            <div class="empresa">
+              <img
+                v-if="conocimiento.empresa === 'Minsait'"
+                src="../assets/empresas/minsait_logo.jpeg"
+                alt="Minsait Logo"
+                class="empresa-logo"
+              />
+              <img
+                v-else-if="conocimiento.empresa === 'Seitech'"
+                src="../assets/empresas/seitechfso_logo.jpeg"
+                alt="Seitech Logo"
+                class="empresa-logo"
+              />
+              {{ conocimiento.empresa }}
             </div>
-            <!-- Fin de la sección de habilidades original -->
+            <hr />
           </div>
+          <button
+            class="btn btn-outline-light mt-3"
+            data-bs-toggle="modal"
+            data-bs-target="#modalConocimientos"
+          >
+            Ver Más Aptitudes
+          </button>
         </div>
       </div>
-    </section>
-    <!-- Proyectos Section -->
-<section class="proyectos bg-secondary text-white" id="proyectos">
-  <div class="container py-5">
-    <h2 class="display-4 font-weight-bold text-center mb-5">
-      Mis Proyectos
-    </h2>
-    <div class="row">
-      <!-- Proyectos (iterados desde el array) -->
-      <div class="col-md-4" v-for="(proyecto, index) in proyectos" :key="index">
-        <div class="proyecto card mb-5" style="height: 100%;">
-          <div class="card-body">
-            <h4 class="card-title font-weight-bold">{{ proyecto.nombre }}</h4>
-            <p class="card-text">{{ proyecto.descripcion }}</p>
-            <!-- Imagen previa del proyecto y enlace a la URL -->
-            <a :href="proyecto.url" target="_blank">
-              <img
-                :src="proyecto.imagen"
-                alt="Imagen de {{ proyecto.nombre }}"
-                class="img-fluid mb-3"
-                style="max-height: 200px; width: auto;"
-              />
-            </a>
-            <div class="tecnologias">
-              <!-- Agrega iconos de lenguajes de programación aquí (ejemplo) -->
-              <i class="fab fa-html5"></i>
-              <i class="fab fa-css3"></i>
-              <i class="fab fa-js"></i>
-              <i class="fab fa-react"></i>
-              <i class="fab fa-node-js"></i>
-              <i class="fab fa-python"></i>
+    </div>
+  </div> 
+</section>
+
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalConocimientos"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Mis Aptitudes</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div
+              class="conocimiento"
+              v-for="(conocimiento, index) in conocimientos"
+              :key="index"
+            >
+              <strong>{{ conocimiento.nombre }}</strong>
+              <div class="empresa">
+                <img
+                  v-if="conocimiento.empresa === 'Minsait'"
+                  src="../assets/empresas/minsait_logo.jpeg"
+                  alt="Minsait Logo"
+                  class="empresa-logo"
+                />
+                <img
+                  v-else-if="conocimiento.empresa === 'Seitech'"
+                  src="../assets/empresas/seitechfso_logo.jpeg"
+                  alt="Seitech Logo"
+                  class="empresa-logo"
+                />
+                {{ conocimiento.empresa }}
+              </div>
+              <hr />
             </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-    <!-- Testimonios Section -->
-    <section class="testimonios bg-dark text-white" id="testimonios">
+
+    <!-- Proyectos Section -->
+    <section class="proyectos bg-secondary text-white" id="proyectos">
       <div class="container py-5">
-        <h2 class="display-4 font-weight-bold text-center mb-5">Testimonios</h2>
+        <h2 class="display-4 font-weight-bold text-center mb-5">
+          Mis Proyectos
+        </h2>
         <div class="row">
-          <!-- Testimonio 1 -->
-          <div class="col-md-6 offset-md-3">
-            <div class="testimonio text-center p-4">
-              <i class="fas fa-quote-left fa-2x"></i>
-              <p class="lead">
-                Fue un verdadero placer trabajar con Ángel Cucalón en nuestro
-                proyecto web. Su nivel de profesionalismo, experiencia y
-                dedicación realmente sobresalió en todo momento. Desde el
-                principio, Ángel Cucalón demostró una profunda comprensión de
-                nuestras necesidades y objetivos. Escuchó atentamente nuestras
-                ideas y visiones para el sitio web y, lo que es aún más
-                impresionante, las llevó a la vida de una manera que superó
-                nuestras expectativas.
-              </p>
-              <p><strong>John Doe</strong></p>
+          <div
+            class="col-md-4 mb-4"
+            v-for="(proyecto, index) in proyectos"
+            :key="index"
+          >
+            <div class="proyecto card mb-5" style="height: 100%">
+              <div class="card-body">
+                <h4 class="card-title font-weight-bold">
+                  {{ proyecto.nombre }}
+                </h4>
+                <p class="card-text">{{ proyecto.descripcion }}</p>
+                <a :href="proyecto.url" target="_blank">
+                  <img
+                    :src="proyecto.imagen"
+                    alt="Imagen de {{ proyecto.nombre }}"
+                    class="img-fluid mb-3"
+                    style="max-height: 200px; width: auto"
+                  />
+                </a>
+                <div class="tecnologias">
+                  <i class="fab fa-html5"></i>
+                  <i class="fab fa-css3"></i>
+                  <i class="fab fa-js"></i>
+                  <i class="fab fa-react"></i>
+                  <i class="fab fa-node-js"></i>
+                  <i class="fab fa-python"></i>
+                </div>
+              </div>
             </div>
           </div>
-          <!-- Testimonio 2 -->
-          <div class="col-md-6 offset-md-3">
-            <div class="testimonio text-center p-4">
-              <i class="fas fa-quote-left fa-2x"></i>
-              <p class="lead">
-                No podríamos estar más satisfechos con el trabajo de Ángel
-                Cucal. Su experiencia en desarrollo web se refleja claramente en
-                el sitio que creó para nosotros. Es un profesional comprometido
-                y eficiente que entregó exactamente lo que necesitábamos.
-                ¡Gracias, Ángel Cucalón!
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiencia Section con Línea de Tiempo -->
+    <section class="experiencia bg-secondary text-white" id="experiencia">
+      <div class="container py-5">
+        <h2 class="display-4 font-weight-bold text-center mb-5">Experiencia</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3 class="font-weight-bold">
+                <img
+                  src="../assets/empresas/minsait_logo.jpeg"
+                  alt="Minsait Logo"
+                  class="empresa-logo"
+                />
+                Minsait
+              </h3>
+              <p>Oct. 2023 - Sept. 2024 · 1 año</p>
+              <p>
+                Desarrollo de sistemas y servicios financieros con .NET.
+                Realización de informes con RDL, almacenados y jobs SQL.
               </p>
-              <p><strong>Jane Smith</strong></p>
+              <p>
+                <strong>Stack:</strong> C#, ASP.NET, Visual Basic .NET, SQL
+                Server, C, C++, Report Services.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3 class="font-weight-bold">
+                <img
+                  src="../assets/empresas/seitechfso_logo.jpeg"
+                  alt="Seitech Logo"
+                  class="empresa-logo"
+                />
+                Seitech
+              </h3>
+              <p>Mar. 2023 - Jun. 2023 · 4 meses</p>
+              <p>
+                Creación de API Rest y comprobación con Postman. Desarrollo de
+                aplicaciones web con Wordpress y React.js.
+              </p>
+              <p><strong>Stack:</strong> Python, JavaScript, MongoDB, Redis.</p>
             </div>
           </div>
         </div>
@@ -188,42 +259,33 @@
     </section>
 
     <!-- Contacto Section -->
-    <!-- Redes Sociales Section -->
-    <section class="redes-sociales bg-secondary text-white" id="contacto">
+    <section class="contacto bg-dark text-white" id="contacto">
       <div class="container py-5">
-        <h2 class="display-4 font-weight-bold text-center mb-5">
-          Mis Redes Sociales
-        </h2>
+        <h2 class="display-4 font-weight-bold text-center mb-5">Contacto</h2>
+        <p class="lead text-center">
+          Si deseas ponerte en contacto conmigo, no dudes en enviarme un mensaje
+          a través de mis redes sociales.
+        </p>
         <div class="text-center">
-          <!-- Enlaces a redes sociales con iconos -->
-
-          <a href="https://www.instagram.com/kukaloon/" target="_blank">
-  <font-awesome-icon
-    :icon="['fab', 'instagram']"
-    size="3x"
-    class="mx-2"
-    style="color: #000;"
-  ></font-awesome-icon>
-</a>
-<a
-  href="https://www.linkedin.com/in/%C3%A1ngel-cucal%C3%B3n-guti%C3%A9rrez-b51102230/"
-  target="_blank"
->
-<font-awesome-icon
-  :icon="['fab', 'linkedin']"
-  size="3x"
-  class="mx-2"
-  style="color: #000;"
-></font-awesome-icon>
-
-</a>
+          <a
+            href="https://linkedin.com/in/ángel-cucalón-gutiérrez-b51102230"
+            class="btn btn-outline-light mx-2"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/cucalondev"
+            class="btn btn-outline-light mx-2"
+            target="_blank"
+            >GitHub</a
+          >
         </div>
       </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer text-center py-3">
-      <p>&copy; 2023 Ángel Cucalón. Todos los derechos reservados.</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+      <p>&copy; 2024 Ángel Cucalón. Todos los derechos reservados.</p>
     </footer>
   </div>
 </template>
@@ -232,10 +294,21 @@
 import alimentaExpress from "../assets/images-projects/alimenta-express.png";
 import rickandmorty from "../assets/images-projects/rick-and-morty.png";
 import poker from "../assets/images-projects/poker.png";
+import mirae from "../assets/images-projects/mirae.png";
+import seitechlogo from "../assets/empresas/seitechfso_logo.jpeg";
+import minsaitlogo from "../assets/empresas/minsait_logo.jpeg";
 export default {
   data() {
     return {
       proyectos: [
+        {
+          nombre: "Mirae",
+          descripcion: "Ecommerce profesional para una empresa",
+          iconos: ["fab fa-wordpress"],
+          url: "https://mirae.es/",
+          imagen: mirae,
+        },
+
         {
           nombre: "Alimenta Express",
           descripcion:
@@ -263,11 +336,25 @@ export default {
         // Agrega más proyectos según sea necesario
       ],
       temaOscuro: false,
-      skills: [
-        { nombre: "HTML5", porcentaje: 75 },
-        { nombre: "CSS3", porcentaje: 70 },
-        { nombre: "JavaScript", porcentaje: 80 },
-        // Agrega más habilidades según sea necesario
+      conocimientos: [
+        { nombre: "React.js", empresa: "Seitech" },
+        { nombre: "Redis", empresa: "Seitech" },
+        { nombre: "Postam", empresa: "Seitech" },
+        { nombre: "Python", empresa: "Seitech" },
+        { nombre: "ClickUp", empresa: "Seitech" },
+        { nombre: "Slack", empresa: "Seitech" },
+        { nombre: "MongoDB", empresa: "Seitech" },
+        { nombre: "Javascript", empresa: "Seitech" },
+        { nombre: "Microsoft SQL Server", empresa: "Minsait" },
+        { nombre: "C#", empresa: "Minsait" },
+        { nombre: "ASP.NET", empresa: "Minsait" },
+        { nombre: "C++", empresa: "Minsait" },
+        { nombre: "C", empresa: "Minsait" },
+        { nombre: "Report services", empresa: "Minsait" },
+        { nombre: "Facturación", empresa: "Minsait" },
+        { nombre: "Centro autorizador", empresa: "Minsait" },
+        { nombre: "XAML", empresa: "Minsait" },
+        // Agrega más conocimientos según sea necesario
       ],
     };
   },
@@ -275,180 +362,74 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos personalizados aquí */
-
-/* Navbar */
-.navbar {
-  background-color: #1a1a1a; /* Color de fondo más oscuro */
-}
-
-/* Hero Section */
-.hero {
-  background-color: #1a1a1a; /* Color de fondo más oscuro */
-  background-image: url("../assets/hero-bg.jpg"); /* Agrega una imagen de fondo */
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-}
-
-/* Perfil Section */
-.perfil {
-  background-color: #333;
-  padding: 60px 0;
-}
-
-.perfil h2 {
-  font-size: 2.5rem;
-}
-
-.perfil .list-group-item {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-}
-
-/* Habilidades Section */
-.habilidades {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(150px, 1fr)
-  ); /* Diseño de cuadrícula adaptable */
-  gap: 20px; /* Espacio entre widgets */
-}
-
-.ui-widget {
-  width: 150px; /* Ancho igual al alto para crear un círculo perfecto */
-  height: 150px; /* Ancho igual al alto para crear un círculo perfecto */
-  border-radius: 50%; /* Hace que los widgets sean circulares */
-  border: 1.2rem solid #2c3e50; /* Cambia el color del borde a uno oscuro */
-  box-shadow: inset 0 0 7px grey;
-  border-left-color: #2c3e50; /* Cambia el color del borde izquierdo */
-  border-top-color: #34495e; /* Cambia el color del borde superior */
-  border-right-color: #2c3e50; /* Cambia el color del borde derecho */
-  border-bottom-color: #95a5a6; /* Cambia el color del borde inferior */
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-/*  Apply css properties to the second 
-            child of ui-widgets class */
-            .ui-widgets:nth-child(2) {
-  border-top-color: #34495e; /* Cambia el color del borde superior */
-  border-right-color: #95a5a6; /* Cambia el color del borde derecho */
-  border-left-color: #2c3e50; /* Cambia el color del borde izquierdo */
-  border-bottom-color: #95a5a6; /* Cambia el color del borde inferior */
-}
-/*  Apply css properties to ui-widgets class 
-            and ui-values class*/
-.ui-widgets .ui-values {
-  top: 40px;
-  position: absolute;
-  left: 10px;
-  right: 0;
-  font-weight: 700;
-  font-size: 2rem;
-}
-
-/*  Apply css properties to ui-widgets 
-            class and ui-labels class*/
-.ui-widgets .ui-labels {
-  left: 0;
-  bottom: -16px;
-  text-shadow: 0 0 4px grey;
-  color: black;
-  position: absolute;
-  width: 100%;
-  font-size: 16px;
-}
-.ui-values {
-  font-weight: 700;
-  font-size: 2rem;
-}
-
-.ui-labels {
-  text-shadow: 0 0 4px grey;
-  color: black;
-  font-size: 16px;
-}
-
-/* Proyectos Section */
-.proyectos {
-  padding: 60px 0;
-}
-
-.proyecto {
-  background-color: #1a1a1a; /* Color de fondo más oscuro para proyectos */
-  padding: 20px;
-  margin-bottom: 30px;
-  transition: transform 0.3s;
-}
-
-.proyecto:hover {
-  transform: scale(1.05);
-}
-
-.proyecto h4 {
-  font-size: 1.5rem;
-  color: #fff;
-}
-
-.proyecto p {
-  color: #ccc;
-}
-
-.tecnologias {
-  margin-top: 10px;
-}
-
-.tecnologias i {
-  font-size: 1.5rem;
+/* Custom styles */
+.empresa-logo {
+  width: 50px; /* Tamaño del logo ajustado */
+  height: auto;
   margin-right: 10px;
 }
-
-/* Testimonios Section */
-.testimonios {
-  background-color: #1a1a1a; /* Color de fondo más oscuro para testimonios */
-  padding: 60px 0;
+.hero {
+  background-image: url("../assets/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-.testimonio {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 5px;
-  margin-bottom: 30px;
+.progress-skill {
+  margin-bottom: 15px;
 }
 
-.testimonio i {
-  color: #fff;
-  margin-bottom: 10px;
+.progress {
+  height: 20px;
+  background-color: #343a40;
 }
 
-.testimonio p {
-  font-style: italic;
-}
-
-.testimonio strong {
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
 }
 
-/* Contacto Section */
-.contacto {
-  padding: 60px 0;
-  background-color: #333;
+.timeline {
+  position: relative;
+  padding: 0;
+  list-style: none;
 }
 
-/* Footer Section */
-.footer {
-  background-color: #1a1a1a;
-  color: #fff;
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  width: 4px;
+  background-color: #007bff;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 20px 0;
+}
+
+.timeline-item .timeline-content {
+  padding: 20px;
+  background-color: #343a40;
+  border-radius: 5px;
+  color: white;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  float: right;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  float: left;
+}
+
+.timeline-item::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 </style>
